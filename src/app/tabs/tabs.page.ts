@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-
+import { MenuService } from '../services/menu.service';
+import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-tabs',
   templateUrl: 'tabs.page.html',
@@ -7,6 +8,6 @@ import { Component } from '@angular/core';
 })
 export class TabsPage {
 
-  constructor() {}
+  constructor(private menuService : MenuService , private _http : HttpClientModule ) {}
 
 }
