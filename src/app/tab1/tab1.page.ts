@@ -21,17 +21,20 @@ export class Tab1Page implements OnInit {
 
   getAllMenus(){
     this.menuService.getMenuOfTheWeek()
-      .subscribe(menuForAday => {
-        menuForAday.forEach((menu, index) => {
-          menu.day = this.findTheDay(index);
+    .subscribe(menuForAday => {
+      menuForAday.forEach((menu, index) => {
+        menu.day = this.findTheDay(index);
+        this.menuService.getImageForAMeal(menu.id)
+        .subscribe(imageForAMeal => {
+          menu.image = `http://localhost:8080/stone.lunchtime/${imageForAMeal.imagePath}`
         });
-        console.log(menuForAday);
-        
-        const mealsPerDay = this.groupByDay(menuForAday);
-        this.mealsPerDay=[...mealsPerDay];
-        console.table(this.mealsPerDay);
-        
       });
+      console.log(menuForAday);
+      
+      const mealsPerDay = this.groupByDay(menuForAday);
+      this.mealsPerDay=[...mealsPerDay];
+      
+    });
 
   }
 
