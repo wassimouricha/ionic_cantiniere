@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Accueil
+      Plats de la semaine
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,7 +13,27 @@
     </ion-toolbar>
   </ion-header>
 
-<h1>
-  Bah c'est juste l'accueil là en fait
-</h1>
+  <ion-card  *ngFor="let day of mealsPerDay">
+    <ion-card-header>
+      <ion-card-title>{{day.name}}</ion-card-title>
+      <ion-card-subtitle>bla bla</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content >
+      <ion-list>
+        <ion-item  *ngFor="let meal of day.meals">
+          <ion-thumbnail slot="start">
+                  <img  src="{{meal.image}}" alt="{{meal.image}}">
+          </ion-thumbnail>
+          <ion-label>Plat:  {{meal.label}}
+            <p>
+              Prix: {{meal.priceDF}} Euros
+            </p>
+          </ion-label>
+        </ion-item>
+  
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+
 </ion-content>
